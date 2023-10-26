@@ -75,8 +75,10 @@ public class Player : MonoBehaviour
 
     private void StackItems(Transform firstItem, Transform secondItem)
     {
-        secondItem.position = new Vector3(Mathf.Lerp(secondItem.transform.position.x, firstItem.transform.position.x, Time.deltaTime * 15f),
-                    Mathf.Lerp(secondItem.transform.position.y, firstItem.transform.position.y + CalculateItemOffsetY(firstItem), Time.deltaTime * 15f), firstItem.transform.position.z);
+        float flySpeed = 15f;
+
+        secondItem.position = new Vector3(Mathf.Lerp(secondItem.transform.position.x, firstItem.transform.position.x, Time.deltaTime * flySpeed),
+                    Mathf.Lerp(secondItem.transform.position.y, firstItem.transform.position.y + CalculateItemOffsetY(firstItem), Time.deltaTime * flySpeed), firstItem.transform.position.z);
     }
 
     private void StackFood()
