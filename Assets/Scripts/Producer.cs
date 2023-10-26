@@ -38,7 +38,19 @@ public class Producer : MonoBehaviour
         StopCoroutine(_produceFood);
     }
 
-    public IEnumerator ProduceFood(float timeToGenerate)
+    private int CountFood()
+    {
+        int foodCount = 0;
+
+        for (int i = 0; i < _foodPlaceCount; i++)
+        {
+            foodCount += _foodPlace[i].transform.childCount;
+        }
+
+        return foodCount;
+    }
+
+    private IEnumerator ProduceFood(float timeToGenerate)
     {
         int foodIndex = 0;
 
@@ -63,22 +75,10 @@ public class Producer : MonoBehaviour
                 else
                     foodIndex = 0;
 
-                _currentOffsetY = _startOffsetY + _addOffsetY * _foodPlace[foodIndex].transform.childCount;   
+                _currentOffsetY = _startOffsetY + _addOffsetY * _foodPlace[foodIndex].transform.childCount;
             }
 
             yield return waitForGenerate;
         }
-    }
-
-    private int CountFood()
-    {
-        int foodCount = 0;
-
-        for (int i = 0; i < _foodPlaceCount; i++)
-        {
-            foodCount += _foodPlace[i].transform.childCount;
-        }
-
-        return foodCount;
     }
 }
