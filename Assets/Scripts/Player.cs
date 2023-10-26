@@ -75,27 +75,23 @@ public class Player : MonoBehaviour
 
     private void StackItems(Transform firstItem, Transform secondItem)
     {
-        float flySpeed = 15f;
+        float followSpeed = 35f;
 
-        secondItem.position = new Vector3(Mathf.Lerp(secondItem.transform.position.x, firstItem.transform.position.x, Time.deltaTime * flySpeed),
-                    Mathf.Lerp(secondItem.transform.position.y, firstItem.transform.position.y + CalculateItemOffsetY(firstItem), Time.deltaTime * flySpeed), firstItem.transform.position.z);
+        secondItem.position = new Vector3(Mathf.Lerp(secondItem.position.x, firstItem.position.x, Time.deltaTime * followSpeed),
+                    Mathf.Lerp(secondItem.position.y, firstItem.position.y + CalculateItemOffsetY(firstItem), Time.deltaTime * followSpeed), firstItem.position.z);
     }
 
     private void StackFood()
     {
-        if (_food.Count == 1)
+        for (int i = 1; i < _food.Count; i++)
         {
-            StackItems(_foodPlace, _food[0].transform);
-        }
-        else if (_food.Count > 1)
-        {
-            for (int i = 1; i < _food.Count; i++)
-            {
-                Food previousFood = _food.ElementAt(i - 1);
-                Food nextFood = _food.ElementAt(i);
+            Food previousFood = _food.ElementAt(i - 1);
+            Food nextFood = _food.ElementAt(i);
 
+            if (i == 1)
+                StackItems(_foodPlace, _food[i].transform);
+            else
                 StackItems(previousFood.transform, nextFood.transform);
-            }
         }
     }
 
@@ -135,7 +131,7 @@ public class Player : MonoBehaviour
 
     private IEnumerator CollectFood(FoodContainer foodContainer)
     {
-        var timeToCollect = new WaitForSecondsRealtime(0.2f);
+        var timeToCollect = new WaitForSecondsRealtime(0.5f);
 
         while (Time.timeScale != 0)
         {
@@ -146,7 +142,8 @@ public class Player : MonoBehaviour
                 if (food != null)
                 {
                     _food.Add(food);
-                    food.transform.SetParent(_foodPlace.transform);
+                    food.transform.SetParent(null);
+                    //food.transform.SetParent(_foodPlace.transform);
                 }
             }
 
