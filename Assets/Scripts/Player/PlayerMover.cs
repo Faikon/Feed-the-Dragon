@@ -1,22 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInputKeyboard))]
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _rotateSpeed;
-    
-    private PlayerInput _playerInput;
+    [SerializeField] private Animator _animator;
+
+    private string _isMovingParameterHash = "isMoving";
+    private PlayerInputKeyboard _playerInputKeyboard;
+    private PlayerInputTouch _playerInputTouch;
     private CharacterController _characterController;
     private Transform _transform;
 
     private void Awake()
     {
         _transform = transform;
-        _playerInput = GetComponent<PlayerInput>();
+        _playerInputKeyboard = GetComponent<PlayerInputKeyboard>();
         _characterController = GetComponent<CharacterController>();
     }
 
@@ -27,9 +28,19 @@ public class PlayerMover : MonoBehaviour
 
     private void Movement()
     {
-        Vector2 inputVector = _playerInput.GetInputVectorNormalized();
+        Vector2 inputVector = Vector2.zero;
+
+        if (Application.isMobilePlatform)
+            inputVector = _playerInputTouch.GetInputVectorNormalized();
+        else
+            inputVector = _playerInputKeyboard.GetInputVectorNormalized();
 
         Vector3 moveDirection = new Vector3(inputVector.x, 0, inputVector.y);
+
+        if (moveDirection == Vector3.zero)
+            _animator.SetBool(_isMovingParameterHash, false);
+        else
+            _animator.SetBool(_isMovingParameterHash, true);
 
         if (_characterController.isGrounded)
         {

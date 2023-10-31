@@ -1,31 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
+[RequireComponent(typeof(FoodTransition))]
+[RequireComponent(typeof(FoodStack))]
 public class Player : MonoBehaviour
 {
+    public event Action<int> GoldChanged;
+
     [SerializeField] private Transform _foodPlace;
     [SerializeField] private int _maxFood;
+    [SerializeField] private float _timeToCollect;
 
-    public event UnityAction<int> GoldChanged;
     public int Gold { get; private set; }
 
-    private Transform _transform;
-    private List<Food> _food = new List<Food>();   
+    private List<Food> _food = new List<Food>();  
+    private List<Food> _flyingFood = new List<Food>();  
     private Coroutine _collectFood;
     private bool _isCollectingFood;
+    private FoodTransition _foodTransition;
+    private FoodStack _foodStack;
 
     private void Awake()
     {
-        _transform = transform;
         _isCollectingFood = false;
+
+        _foodTransition = GetComponent<FoodTransition>();
+        _foodStack = GetComponent<FoodStack>();
     }
 
     private void Update()
     {
-        StackFood();
+        _foodTransition.TransitFood(_flyingFood, _food, _foodPlace.transform.position);
+    }
+
+    private void LateUpdate()
+    {
+        _foodStack.StackFood(_food, _foodPlace);  
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,13 +53,32 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent<FoodContainer>(out FoodContainer foodContainer))
+        {
+            StopCoroutine(_collectFood);
             _isCollectingFood = false;
+        }
     }
 
     public void AddGold(int gold)
     {
-        Gold += gold;
-        GoldChanged?.Invoke(gold);
+        if (gold > 0)
+        {
+            Gold += gold;
+            GoldChanged?.Invoke(Gold);
+        }
+    }
+
+    public bool TrySpendGold(int gold)
+    {
+        if (gold > 0 && Gold - gold >= 0)
+        {
+            Gold -= gold;
+            GoldChanged?.Invoke(Gold);
+
+            return true;
+        }
+        
+        return false;
     }
 
     public Food GiveFood()
@@ -62,51 +94,19 @@ public class Player : MonoBehaviour
         return food;
     }
 
-    private float CalculateItemOffsetY(Transform item)
-    {
-        return item.localScale.y;
-    }
-
-    private void StackItems(Transform firstItem, Transform secondItem)
-    {
-        float followSpeed = 35f;
-
-        secondItem.position = new Vector3(Mathf.Lerp(secondItem.position.x, firstItem.position.x, Time.deltaTime * followSpeed),
-                    Mathf.Lerp(secondItem.position.y, firstItem.position.y + CalculateItemOffsetY(firstItem), Time.deltaTime * followSpeed), firstItem.position.z);
-    }
-
-    private void StackFood()
-    {
-        for (int i = 0; i < _food.Count; i++)
-        {
-            if (i == 0)
-                StackItems(_foodPlace, _food[i].transform);
-            else
-                StackItems(_food.ElementAt(i - 1).transform, _food.ElementAt(i).transform);
-        }
-    }
-
-    private void DeliveFood(Collider collider)
-    {
-        if (collider.TryGetComponent<DeliveryArea>(out DeliveryArea deliveryArea))
-        {
-
-        }
-    }
-
     private IEnumerator CollectFood(FoodContainer foodContainer)
     {
-        var timeToCollect = new WaitForSecondsRealtime(0.15f);
+        var timeToCollect = new WaitForSecondsRealtime(_timeToCollect);
 
         while (_isCollectingFood)
         {
-            if (_food.Count < _maxFood)
+            if (_food.Count + _flyingFood.Count < _maxFood)
             {
-                Food food = foodContainer.TakeFood();
+                Food food = (Food)foodContainer.TakeProduct();
 
                 if (food != null)
                 {
-                    _food.Add(food);
+                    _flyingFood.Add(food);
                     food.transform.SetParent(null);
                 }
             }
