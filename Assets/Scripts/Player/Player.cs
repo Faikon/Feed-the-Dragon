@@ -108,7 +108,7 @@ public class Player : MonoBehaviour
         {
             if (_food.Count + _flyingFood.Count < _maxFood)
             {
-                Food food = (Food)foodContainer.TakeProduct();
+                Food food = (Food)foodContainer.GetProduct();
 
                 if (food != null)
                 {

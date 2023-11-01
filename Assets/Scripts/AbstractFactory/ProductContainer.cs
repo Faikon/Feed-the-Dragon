@@ -23,7 +23,7 @@ public abstract class ProductContainer : MonoBehaviour
         return _productPlaces[index];
     }
 
-    public virtual Product TakeProduct()
+    public virtual Product GetProduct()
     {
         return GetTopProductInMaxFoodPlace();
     }

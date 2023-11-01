@@ -6,12 +6,3 @@ public abstract class Product : MonoBehaviour
 
     public ProductType Type => _type;
 }
-
-public enum ProductType
-{
-    Avocado,
-    Banana,
-    Cheese,
-    Chicken,
-    Gold
-}

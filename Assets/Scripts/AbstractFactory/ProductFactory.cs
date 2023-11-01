@@ -1,9 +1,12 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
 public abstract class ProductFactory : MonoBehaviour
 {
+    public event Action<bool> IsWorking;
+
     [SerializeField] protected float _timeToCreate;
     [SerializeField] protected int _maxProduct;
 
@@ -70,11 +73,15 @@ public abstract class ProductFactory : MonoBehaviour
     private void Work()
     {
         if (_productContainer.CountProducts() == _maxProduct)
+        {
             _isWorking = false;
+            IsWorking?.Invoke(_isWorking);
+        }
 
         if (_productContainer.CountProducts() < _maxProduct && _isWorking == false)
         {
             _isWorking = true;
+            IsWorking?.Invoke(_isWorking);
             _createProduct = StartCoroutine(CreateProduct());
         }
     }

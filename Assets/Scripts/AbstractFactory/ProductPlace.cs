@@ -3,17 +3,27 @@ using UnityEngine;
 
 public abstract class ProductPlace: MonoBehaviour
 {
+    private Transform _transform;
+
+    private void Awake()
+    {
+        _transform = transform;
+    }
+
     public virtual float GetCurrentOffsetY(Product product)
     {
-        return product.transform.localScale.y * transform.childCount;
+        return product.transform.localScale.y * _transform.childCount;
     }
 
     public virtual Product GetTopProduct()
     {
-        Product[] allProducts = GetComponentsInChildren<Product>();
+        int childCount = _transform.childCount;
 
-        if (allProducts != null)
-            return allProducts.Last();
+        if (childCount > 0)
+        {
+            Transform lastChild = _transform.GetChild(childCount - 1);
+            return lastChild.GetComponent<Product>();
+        }
 
         return null;
     }
