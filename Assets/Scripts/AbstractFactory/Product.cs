@@ -9,9 +9,9 @@ public abstract class Product : MonoBehaviour
 
 public enum ProductType
 {
-    Food1,
-    Food2,
-    Food3,
-    Food4,
+    Avocado,
+    Banana,
+    Cheese,
+    Chicken,
     Gold
 }

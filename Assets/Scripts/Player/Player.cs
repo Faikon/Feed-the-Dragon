@@ -9,12 +9,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public event Action<int> GoldChanged;
+    public event Action<int, int> FoodCountChanged;
 
     [SerializeField] private Transform _foodPlace;
     [SerializeField] private int _maxFood;
     [SerializeField] private float _timeToCollect;
 
     public int Gold { get; private set; }
+    public int MaxFood => _maxFood;
 
     private List<Food> _food = new List<Food>();  
     private List<Food> _flyingFood = new List<Food>();  
@@ -25,6 +27,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        Gold += 2000;
+
         _isCollectingFood = false;
 
         _foodTransition = GetComponent<FoodTransition>();
@@ -38,7 +42,7 @@ public class Player : MonoBehaviour
 
     private void LateUpdate()
     {
-        _foodStack.StackFood(_food, _foodPlace);  
+        _foodStack.MoveStackFood(_food, _foodPlace);  
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,6 +95,8 @@ public class Player : MonoBehaviour
             _food.RemoveAt(_food.Count - 1);
         }
 
+        FoodCountChanged?.Invoke(_food.Count + _flyingFood.Count, _maxFood);
+
         return food;
     }
 
@@ -107,6 +113,9 @@ public class Player : MonoBehaviour
                 if (food != null)
                 {
                     _flyingFood.Add(food);
+
+                    FoodCountChanged?.Invoke(_food.Count + _flyingFood.Count, _maxFood);
+
                     food.transform.SetParent(null);
                 }
             }

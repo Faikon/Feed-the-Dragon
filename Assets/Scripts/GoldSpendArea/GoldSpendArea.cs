@@ -39,13 +39,17 @@ public class GoldSpendArea : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.TryGetComponent<Player>(out Player player))
+        {
             _isSpending = false;
+        }
     }
-
-    protected virtual 
 
     private IEnumerator SpendGold(Player player)
     {
+        var spendingDelay = new WaitForSeconds(1f);
+
+        yield return spendingDelay;
+
         var timeToSpend = new WaitForSecondsRealtime(0.1f);
 
         while (_isSpending)
@@ -59,6 +63,7 @@ public class GoldSpendArea : MonoBehaviour
             if (_currentGoldToSpend <= 0)
             {
                 GoldSpent?.Invoke();
+
                 gameObject.SetActive(false);
             }
 

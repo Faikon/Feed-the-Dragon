@@ -34,15 +34,15 @@ public abstract class ProductFactory : MonoBehaviour
         float jumpPower = 4f;
         int numJumps = 1;
         float jumpDuration = 0.7f;
-        
-        if (jumpDuration > _timeToCreate)
-            jumpDuration = _timeToCreate;
 
         var waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
 
         while (_isWorking)
         {
             waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
+
+            if (jumpDuration > _timeToCreate)
+                jumpDuration = _timeToCreate;
 
             ProductPlace productPlace = _productContainer.GetProductPlaceByIndex(_currentProductPlaceIndex);
             GameObject productObject = _objectsPool.Get();

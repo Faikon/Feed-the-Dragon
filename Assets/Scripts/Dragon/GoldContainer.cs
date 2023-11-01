@@ -28,6 +28,8 @@ public class GoldContainer : ProductContainer
         Gold[] allGold = GetComponentsInChildren<Gold>();
 
         foreach (Gold gold in allGold)
+        {
             _goldPool.Return(gold.gameObject);
+        }
     }
 }
