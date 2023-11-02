@@ -32,34 +32,19 @@ public abstract class ProductFactory : MonoBehaviour
 
     private IEnumerator CreateProduct()
     {
-        float offsetY = 0;
-
-        float jumpPower = 4f;
-        int numJumps = 1;
-        float jumpDuration = 0.7f;
-
         var waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
 
         while (_isWorking)
         {
             waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
 
-            if (jumpDuration > _timeToCreate)
-                jumpDuration = _timeToCreate;
-
             ProductPlace productPlace = _productContainer.GetProductPlaceByIndex(_currentProductPlaceIndex);
             GameObject productObject = _objectsPool.Get();
             Product product = productObject.GetComponent<Product>();
 
-            offsetY = productPlace.GetCurrentOffsetY(product);
-
             product.transform.position = _productCreator.transform.position;
 
-            Tween productJump = product.transform.DOJump(new Vector3(productPlace.transform.position.x, productPlace.transform.position.y + offsetY, productPlace.transform.position.z), jumpPower, numJumps, jumpDuration).SetEase(Ease.OutQuad);
-
-            yield return productJump.WaitForCompletion();
-
-            product.transform.SetParent(productPlace.transform);
+            productPlace.RecieveProduct(product, _timeToCreate);
 
             if (_currentProductPlaceIndex < _productContainer.ProductPlaceCount - 1)
                 _currentProductPlaceIndex++;

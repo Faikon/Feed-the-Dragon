@@ -9,7 +9,6 @@ public abstract class ProductContainer : MonoBehaviour
 
     protected virtual void Awake()
     {
-        //_productPlaces = GetComponentsInChildren<ProductPlace>();
         _productPlaceCount = _productPlaces.Length;
     }
 

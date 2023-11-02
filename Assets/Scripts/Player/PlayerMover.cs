@@ -32,7 +32,7 @@ public class PlayerMover : MonoBehaviour
     {
         Vector2 inputVector = Vector2.zero;
 
-        if (Application.isMobilePlatform)
+        if (UnityEngine.Device.Application.isMobilePlatform)
             inputVector = _playerInputTouch.GetInputVectorNormalized();
         else
             inputVector = _playerInputKeyboard.GetInputVectorNormalized();

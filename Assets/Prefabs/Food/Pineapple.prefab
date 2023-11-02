@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 3
-  _reward: 5
+  _reward: 40
 --- !u!54 &6552551641284513907
 Rigidbody:
   m_ObjectHideFlags: 0

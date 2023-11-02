@@ -3,6 +3,7 @@ using UnityEngine;
 public class OpenFactoryArea : GoldDeliveryArea
 {
     [SerializeField] ProductFactory _productFactory;
+    [SerializeField] Transform _factoryPreparation;
 
     private void OnEnable()
     {
@@ -17,5 +18,6 @@ public class OpenFactoryArea : GoldDeliveryArea
     private void OpenFactory()
     {
         _productFactory.gameObject.SetActive(true);
+        _factoryPreparation.gameObject.SetActive(false);
     }
 }

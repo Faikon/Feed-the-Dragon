@@ -6,8 +6,10 @@ public class PlayerInputTouch : MonoBehaviour
 
     private void Awake()
     {
-        if (Application.isMobilePlatform)
+        if (UnityEngine.Device.Application.isMobilePlatform)
+        {
             _joystick.gameObject.SetActive(true);
+        }
     }
 
     public Vector2 GetInputVectorNormalized()

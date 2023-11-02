@@ -25,7 +25,7 @@ public class GoldArea : ProductFactory
     private void Start()
     {
         _maxProduct = 0;
-        _goldText.text = "$ " + Gold;
+        _goldText.text = Gold.ToString();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -45,7 +45,7 @@ public class GoldArea : ProductFactory
         if (gold > 0)
             Gold += gold;
 
-        _goldText.text = "$ " + Gold;
+        _goldText.text = Gold.ToString();
         _maxProduct = Gold / _goldViewPerGold;
     }
 
@@ -53,6 +53,6 @@ public class GoldArea : ProductFactory
     {
         Gold = 0;
         _maxProduct = 0;
-        _goldText.text = "$ " + Gold;
+        _goldText.text = Gold.ToString();
     }
 }
