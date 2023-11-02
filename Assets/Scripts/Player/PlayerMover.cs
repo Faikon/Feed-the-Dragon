@@ -2,6 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerInputKeyboard))]
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(PlayerInputTouch))]
 public class PlayerMover : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed;
@@ -19,6 +20,7 @@ public class PlayerMover : MonoBehaviour
         _transform = transform;
         _playerInputKeyboard = GetComponent<PlayerInputKeyboard>();
         _characterController = GetComponent<CharacterController>();
+        _playerInputTouch = GetComponent<PlayerInputTouch>();
     }
 
     private void Update()

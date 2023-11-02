@@ -6,6 +6,7 @@ using System;
 
 public class GoldDeliveryAreaView : DeliveryAreaView
 {
+    [SerializeField] private ParticleSystem _particleSystem;
     [SerializeField] Image _fillImage;
     [SerializeField] private float _pingPongHalfScaleDuration = 0.5f;
     [SerializeField] private Vector3 _pingPongScaleAddition = new Vector3(0.2f, 0.2f, 0);
@@ -24,6 +25,7 @@ public class GoldDeliveryAreaView : DeliveryAreaView
 
         _goldDeliveryArea = GetComponentInParent<GoldDeliveryArea>();
         _canvas = GetComponentInChildren<Canvas>();
+        
     }
 
     protected override void OnEnable()
@@ -31,6 +33,7 @@ public class GoldDeliveryAreaView : DeliveryAreaView
         base.OnEnable();
 
         _goldDeliveryArea.GoldDelivering += OnGoldDelivering;
+        _goldDeliveryArea.GoldDelivered += OnGoldDelivered;
     }
 
     protected override void OnDisable()
@@ -38,6 +41,7 @@ public class GoldDeliveryAreaView : DeliveryAreaView
         base.OnDisable();
 
         _goldDeliveryArea.GoldDelivering -= OnGoldDelivering;
+        _goldDeliveryArea.GoldDelivered -= OnGoldDelivered;
     }
 
     private void Start()
@@ -63,6 +67,11 @@ public class GoldDeliveryAreaView : DeliveryAreaView
     private void OnGoldDelivering(int currentGoldToDelive, int goldToDelive)
     {
         _fillImage.fillAmount = (float)currentGoldToDelive / goldToDelive;
+    }
+
+    private void OnGoldDelivered()
+    {
+        _particleSystem.Play();
     }
 
     private IEnumerator PingPongScale(bool isDelivering)

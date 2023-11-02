@@ -76,6 +76,9 @@ public abstract class ProductFactory : MonoBehaviour
         {
             _isWorking = false;
             IsWorking?.Invoke(_isWorking);
+
+            if (_createProduct != null)
+                StopCoroutine(_createProduct);
         }
 
         if (_productContainer.CountProducts() < _maxProduct && _isWorking == false)

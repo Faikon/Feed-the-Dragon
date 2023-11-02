@@ -32,8 +32,11 @@ public class GoldArea : ProductFactory
     {
         if (other.TryGetComponent<Player>(out Player player))
         {
-            player.AddGold(Gold);
-            GoldTransfered?.Invoke();
+            if (Gold > 0)
+            {
+                player.AddGold(Gold);
+                GoldTransfered?.Invoke();
+            }
         }
     }
 

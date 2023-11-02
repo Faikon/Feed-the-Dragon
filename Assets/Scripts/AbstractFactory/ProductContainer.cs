@@ -2,14 +2,14 @@ using UnityEngine;
 
 public abstract class ProductContainer : MonoBehaviour
 {
-    private ProductPlace[] _productPlaces;
+    [SerializeField] private ProductPlace[] _productPlaces;
     private int _productPlaceCount;
 
     public int ProductPlaceCount => _productPlaceCount;
 
     protected virtual void Awake()
     {
-        _productPlaces = GetComponentsInChildren<ProductPlace>();
+        //_productPlaces = GetComponentsInChildren<ProductPlace>();
         _productPlaceCount = _productPlaces.Length;
     }
 

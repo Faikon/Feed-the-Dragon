@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FoodReciever : MonoBehaviour
 {
+    public event Action IsRecieved;
+
     [SerializeField] private GoldArea _goldArea;
     [SerializeField] private List<ProductsPool> _foodPools;
 
@@ -18,6 +21,7 @@ public class FoodReciever : MonoBehaviour
                     {
                         _goldArea.AddGold(food.Reward);
                         pool.Return(food.gameObject);
+                        IsRecieved?.Invoke();
                     }
                 }
             }

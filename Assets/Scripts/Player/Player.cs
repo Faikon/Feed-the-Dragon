@@ -27,8 +27,6 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        Gold += 2000;
-
         _isCollectingFood = false;
 
         _foodTransition = GetComponent<FoodTransition>();
@@ -58,7 +56,9 @@ public class Player : MonoBehaviour
     {
         if (other.TryGetComponent<FoodContainer>(out FoodContainer foodContainer))
         {
-            StopCoroutine(_collectFood);
+            if (_collectFood != null)
+                StopCoroutine(_collectFood);
+
             _isCollectingFood = false;
         }
     }
