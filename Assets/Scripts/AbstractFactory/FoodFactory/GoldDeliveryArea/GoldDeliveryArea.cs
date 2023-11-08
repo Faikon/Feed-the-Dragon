@@ -26,7 +26,7 @@ public class GoldDeliveryArea : DeliveryArea
 
         yield return deliveringDelay;
 
-        var timeToDelive = new WaitForSecondsRealtime(0.1f);
+        var timeToDelive = new WaitForSeconds(0.1f);
 
         while (_isDelivering)
         {

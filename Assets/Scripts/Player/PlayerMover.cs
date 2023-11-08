@@ -21,6 +21,8 @@ public class PlayerMover : MonoBehaviour
         _playerInputKeyboard = GetComponent<PlayerInputKeyboard>();
         _characterController = GetComponent<CharacterController>();
         _playerInputTouch = GetComponent<PlayerInputTouch>();
+
+        ApplySpeedUpgrade();
     }
 
     private void Update()
@@ -53,5 +55,10 @@ public class PlayerMover : MonoBehaviour
         {
             _characterController.Move(_characterController.velocity + Physics.gravity * Time.deltaTime);
         }
+    }
+
+    private void ApplySpeedUpgrade()
+    {
+        _moveSpeed += PlayerPrefs.GetInt(PlayerKeys.SpeedUpgrade.ToString());
     }
 }

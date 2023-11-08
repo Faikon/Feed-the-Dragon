@@ -32,11 +32,13 @@ public abstract class ProductFactory : MonoBehaviour
 
     private IEnumerator CreateProduct()
     {
-        var waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
+        var waitForGenerate = new WaitForSeconds(_timeToCreate);
+
+        yield return new WaitForSeconds(_timeToCreate);
 
         while (_isWorking)
         {
-            waitForGenerate = new WaitForSecondsRealtime(_timeToCreate);
+            waitForGenerate = new WaitForSeconds(_timeToCreate);
 
             ProductPlace productPlace = _productContainer.GetProductPlaceByIndex(_currentProductPlaceIndex);
             GameObject productObject = _objectsPool.Get();

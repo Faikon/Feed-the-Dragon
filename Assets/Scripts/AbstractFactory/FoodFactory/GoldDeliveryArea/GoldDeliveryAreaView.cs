@@ -64,14 +64,14 @@ public class GoldDeliveryAreaView : DeliveryAreaView
         }
     }
 
+    protected virtual void OnGoldDelivered()
+    {
+        _particleSystem.Play();
+    }
+
     private void OnGoldDelivering(int currentGoldToDelive, int goldToDelive)
     {
         _fillImage.fillAmount = (float)currentGoldToDelive / goldToDelive;
-    }
-
-    private void OnGoldDelivered()
-    {
-        _particleSystem.Play();
     }
 
     private IEnumerator PingPongScale(bool isDelivering)
@@ -83,7 +83,7 @@ public class GoldDeliveryAreaView : DeliveryAreaView
                 _canvasTransform.DOScale(_originalScale, _pingPongHalfScaleDuration).SetEase(Ease.OutBounce);
             });
 
-            yield return new WaitForSecondsRealtime(_pingPongScaleDuration);
+            yield return new WaitForSeconds(_pingPongScaleDuration);
         }
     }
 }

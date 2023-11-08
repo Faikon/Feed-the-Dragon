@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
 
         _foodTransition = GetComponent<FoodTransition>();
         _foodStack = GetComponent<FoodStack>();
+
+        ApplyHatUpgrades();
     }
 
     private void Update()
@@ -100,9 +102,15 @@ public class Player : MonoBehaviour
         return food;
     }
 
+    private void ApplyHatUpgrades()
+    {
+        _maxFood += PlayerPrefs.GetInt(PlayerKeys.HatCapacityUpgrade.ToString()) * 3;
+        _timeToCollect -= PlayerPrefs.GetInt(PlayerKeys.TimeToCollectUpgrade.ToString()) * 0.04f;
+    }
+
     private IEnumerator CollectFood(FoodContainer foodContainer)
     {
-        var timeToCollect = new WaitForSecondsRealtime(_timeToCollect);
+        var timeToCollect = new WaitForSeconds(_timeToCollect);
 
         while (_isCollectingFood)
         {

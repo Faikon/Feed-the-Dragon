@@ -39,7 +39,7 @@ Transform:
   - {fileID: 4312864552937129219}
   - {fileID: 4073846874519809174}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2826491794913680555
 Rigidbody:
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61d3266718b11934a8ff9b0bb4ceb63a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 8
+  _moveSpeed: 7
   _rotateSpeed: 5
   _animator: {fileID: 7861294637170958706}
 --- !u!114 &7104299633131068963
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c1569511bae324cabc351c95e6b116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followSpeed: 35
+  _followSpeed: 40
 --- !u!114 &6401269482929112475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _foodPlace: {fileID: 4073846874519809174}
-  _maxFood: 25
-  _timeToCollect: 0.1
+  _maxFood: 5
+  _timeToCollect: 0.5
 --- !u!114 &7211923520491231116
 MonoBehaviour:
   m_ObjectHideFlags: 0

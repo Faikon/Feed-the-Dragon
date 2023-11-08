@@ -5,11 +5,16 @@ using UnityEngine;
 public class FoodDeliveryArea : DeliveryArea
 {
     [SerializeField] private FoodReciever _foodReciever;
-    [SerializeField] private float _timeToCollect = 0.1f;
+    [SerializeField] private float _timeToDelivery = 0.5f;
+
+    private void Awake()
+    {
+        ApplyDeliveryUpgrades();
+    }
 
     protected override IEnumerator Delive(Player player)
     {
-        var timeToCollect = new WaitForSecondsRealtime(_timeToCollect);
+        var timeToCollect = new WaitForSeconds(_timeToDelivery);
 
         float jumpPower = 2f;
         int numJumps = 1;
@@ -24,5 +29,10 @@ public class FoodDeliveryArea : DeliveryArea
 
             yield return timeToCollect;
         }
+    }
+
+    private void ApplyDeliveryUpgrades()
+    {
+        _timeToDelivery -= PlayerPrefs.GetInt(PlayerKeys.TimeToDeliveryUpgrade.ToString()) * 0.04f;
     }
 }
