@@ -2235,6 +2235,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5439502402911390130, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5573328332137533206, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2317,6 +2321,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5573328332137533206, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877600629254636004, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6104080874687602452, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}

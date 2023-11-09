@@ -32,5 +32,6 @@ public enum PlayerKeys
     Level_09Stars = 29,
     Level_10Stars = 30,
     Level_11Stars = 31,
-    Level_12Stars = 32
+    Level_12Stars = 32,
+    Score = 33
 }

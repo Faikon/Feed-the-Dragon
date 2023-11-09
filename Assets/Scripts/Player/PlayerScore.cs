@@ -5,7 +5,7 @@ public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private List<PlayerKeys> _levelStarsKeys;
 
-    public int Score { get; private set; }
+    private int _score;
 
     private void OnEnable()
     {
@@ -14,11 +14,13 @@ public class PlayerScore : MonoBehaviour
 
     private void CountScore()
     {
-        Score = 0;
+        _score = 0;
 
         foreach (var key in _levelStarsKeys)
         {
-            Score += PlayerPrefs.GetInt(key.ToString());
+            _score += PlayerPrefs.GetInt(key.ToString());
         }
+
+        PlayerPrefs.SetInt(PlayerKeys.Score.ToString(), _score);
     }
 }

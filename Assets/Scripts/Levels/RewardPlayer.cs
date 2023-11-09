@@ -29,7 +29,7 @@ public class RewardPlayer : MonoBehaviour
         PlayerPrefs.Save();
     }
 
-    private void AddMoney()
+    public void AddMoney()
     {
         int money = _levelRewards.GetRewardByIndex((int)_sceneName - sceneNameOffset);
         _playerMoney.AddMoney(money);
