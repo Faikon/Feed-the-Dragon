@@ -3,6 +3,7 @@ using UnityEngine;
 public class GoldAreaView : MonoBehaviour
 {
     [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private SfxClips _sfxClips;
 
     private GoldArea _goldArea;
 
@@ -23,6 +24,7 @@ public class GoldAreaView : MonoBehaviour
 
     private void OnGoldTransfered()
     {
+        _sfxClips.PlayGetGold();
         _particleSystem.Play();
     }
 }

@@ -8,6 +8,7 @@ public class FoodReciever : MonoBehaviour
 
     [SerializeField] private GoldArea _goldArea;
     [SerializeField] private List<ProductsPool> _foodPools;
+    [SerializeField] private SfxClips _sfxClips;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,6 +20,8 @@ public class FoodReciever : MonoBehaviour
                 {
                     if (food.Type == pool.GetProductType())
                     {
+                        _sfxClips.PlayDeliveFood();
+
                         _goldArea.AddGold(food.Reward);
                         pool.Return(food.gameObject);
                         IsRecieved?.Invoke();

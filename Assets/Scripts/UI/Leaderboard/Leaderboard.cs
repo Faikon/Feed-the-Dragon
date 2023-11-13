@@ -13,17 +13,6 @@ public class Leaderboard : MonoBehaviour
 
     private readonly List<LeaderboardPlayer> _leaderboardPlayers = new();
 
-    public void SetPlayer(int score)
-    {
-        if (PlayerAccount.IsAuthorized == false)
-            return;
-
-        Agava.YandexGames.Leaderboard.GetPlayerEntry(LeaderboardName, onSuccessCallback =>
-        {
-            Agava.YandexGames.Leaderboard.SetScore(LeaderboardName, score);
-        });
-    }
-
     public void Fill()
     {
         _leaderboardPlayers.Clear();
@@ -53,17 +42,15 @@ public class Leaderboard : MonoBehaviour
 
     public void OpenLeaderboard()
     {
-#if !UNITY_WEBGL || UNITY_EDITOR
+/*#if !UNITY_WEBGL || UNITY_EDITOR
         _authorizationRequestPanel.SetActive(true);
-#else
+#else*/
 
         if (PlayerAccount.IsAuthorized)
         {
             PlayerAccount.RequestPersonalProfileDataPermission();
 
             _leaderboardPanel.gameObject.SetActive(true);
-
-            SetPlayer(UnityEngine.PlayerPrefs.GetInt(PlayerKeys.Score.ToString()));
 
             Fill();
 
@@ -75,7 +62,7 @@ public class Leaderboard : MonoBehaviour
 
             return;
         }
-#endif
+//#endif
     }
 
     public void Authorize()

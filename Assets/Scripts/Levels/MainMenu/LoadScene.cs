@@ -5,8 +5,7 @@ public class LoadScene : MonoBehaviour
 {
     public void Load(string scene)
     {
-        Time.timeScale = 1.0f;
-        AudioListener.volume = PlayerPrefs.GetFloat(PlayerKeys.MusicVolume.ToString(), 0.5f);
+        Time.timeScale = 1f;
 
         SceneManager.LoadScene(scene);
     }

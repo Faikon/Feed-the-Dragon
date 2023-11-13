@@ -5,7 +5,7 @@ public enum PlayerKeys
     HatCapacityUpgrade = 2,
     TimeToCollectUpgrade = 3,
     TimeToDeliveryUpgrade = 4,
-    IsVolumeOn = 5,
+    IsAudioToggleOn = 5,
     SfxVolume = 6,
     MusicVolume = 7,
     LevelsCompleted = 8,

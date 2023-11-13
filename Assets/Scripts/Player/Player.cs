@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _foodPlace;
     [SerializeField] private int _maxFood;
     [SerializeField] private float _timeToCollect;
+    [SerializeField] private SfxClips _sfxClips;
 
     public int Gold { get; private set; }
     public int MaxFood => _maxFood;
@@ -116,10 +117,13 @@ public class Player : MonoBehaviour
         {
             if (_food.Count + _flyingFood.Count < _maxFood)
             {
+
                 Food food = (Food)foodContainer.GetProduct();
 
                 if (food != null)
                 {
+                    _sfxClips.PlayGetFood();
+
                     _flyingFood.Add(food);
 
                     FoodCountChanged?.Invoke(_food.Count + _flyingFood.Count, _maxFood);
