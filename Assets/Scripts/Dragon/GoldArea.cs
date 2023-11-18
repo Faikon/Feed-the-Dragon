@@ -7,8 +7,7 @@ public class GoldArea : ProductFactory
     public event Action GoldTransfered;
 
     [SerializeField] private TMP_Text _goldText;
-
-    private int _goldViewPerGold = 5;
+    [SerializeField] private int _goldViewPerGold = 5;
 
     public int Gold { get; private set; }
 

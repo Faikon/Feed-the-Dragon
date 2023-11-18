@@ -81,8 +81,6 @@ public class RewardPlayer : MonoBehaviour
 
     private void SetPlayerToLeaderboard()
     {
-        Debug.Log(_score);
-
         if (Agava.YandexGames.PlayerAccount.IsAuthorized == false)
             return;
 

@@ -30,7 +30,7 @@ public class Leaderboard : MonoBehaviour
 
                 if (string.IsNullOrEmpty(name))
                 {
-                    name = AnonymousName;
+                    name = Lean.Localization.LeanLocalization.GetTranslationText(AnonymousName);
                 }
 
                 _leaderboardPlayers.Add(new LeaderboardPlayer(name, rank, score));

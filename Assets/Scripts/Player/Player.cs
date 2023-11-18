@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        //Gold += 2000;
+
         _isCollectingFood = false;
 
         _foodTransition = GetComponent<FoodTransition>();
