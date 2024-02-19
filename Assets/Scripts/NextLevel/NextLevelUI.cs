@@ -10,13 +10,12 @@ public class NextLevelUI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.TryGetComponent<Player>(out Player player))
-        {
-            _sfxClips.PlayLevelComplete();
-            _canvas.gameObject.SetActive(true);
-            _pauseButton.gameObject.SetActive(false);
-            Time.timeScale = 0;
-            _focusObserver.gameObject.SetActive(false);
-        }
+        _sfxClips.PlayLevelComplete();
+        _canvas.gameObject.SetActive(true);
+        _pauseButton.gameObject.SetActive(false);
+        Time.timeScale = 0;
+
+        _focusObserver.SetCurrentTimeScale(0f);
+        //_focusObserver.gameObject.SetActive(false);
     }
 }

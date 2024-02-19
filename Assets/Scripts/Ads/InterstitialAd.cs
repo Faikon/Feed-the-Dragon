@@ -18,6 +18,8 @@ public class InterstitialAd : MonoBehaviour
 
     private void OnOpenCallback()
     {
+        //_focusObserver.SetCurrentTimeScale(0f);
+
         Time.timeScale = 0;
         AudioListener.volume = 0f;
 

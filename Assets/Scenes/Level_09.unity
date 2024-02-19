@@ -5912,6 +5912,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
+      propertyPath: _audioToggle
+      value: 
+      objectReference: {fileID: 2112047104}
+    - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
       propertyPath: _focusObserver
       value: 
       objectReference: {fileID: 498849717}
@@ -8471,6 +8475,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2112047104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8216199971033805472, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
+  m_PrefabInstance: {fileID: 2112047100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &2122049412 stripped

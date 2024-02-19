@@ -7,12 +7,16 @@ public class PausePanel : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        _focusObserver.gameObject.SetActive(false);
+
+        _focusObserver.SetCurrentTimeScale(0f);
+        //_focusObserver.gameObject.SetActive(false);
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
-        _focusObserver.gameObject.SetActive(true);
+
+        _focusObserver.SetCurrentTimeScale(1f);
+        //_focusObserver.gameObject.SetActive(true);
     }
 }

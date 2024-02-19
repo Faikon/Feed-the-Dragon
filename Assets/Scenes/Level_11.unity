@@ -6230,6 +6230,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8823261460981655618, guid: c805cf5a68652294b842e225f87e9bee, type: 3}
+      propertyPath: defaultLanguage
+      value: Russian
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7717,6 +7721,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
+      propertyPath: _audioToggle
+      value: 
+      objectReference: {fileID: 2112047104}
+    - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
       propertyPath: _focusObserver
       value: 
       objectReference: {fileID: 498849717}
@@ -8260,6 +8268,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1794907165}
     m_Modifications:
+    - target: {fileID: 454034124792688231, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069399016508546261, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: _goldToDelive
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069399016508546261, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: _minimumGoldToDelive
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: m_text
+      value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: m_margin.w
+      value: 3.6552455
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811188639848537089, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: _particleSystem
+      value: 
+      objectReference: {fileID: 5693088196000456819, guid: 4a94ac1285ddf604db9324f8877d2b8a, type: 3}
+    - target: {fileID: 7602329642269098051, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
+      propertyPath: m_Name
+      value: SpeedUpgradeArea_01
+      objectReference: {fileID: 0}
     - target: {fileID: -4823669998316751111, guid: f2e262ef596761d4ea82311bc6123e45, type: 3}
       propertyPath: _goldToDelive
       value: 400
@@ -8319,38 +8359,6 @@ PrefabInstance:
     - target: {fileID: 7602329642269098051, guid: f2e262ef596761d4ea82311bc6123e45, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 454034124792688231, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4069399016508546261, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: _goldToDelive
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 4069399016508546261, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: _minimumGoldToDelive
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: m_text
-      value: "\u0423\u043B\u0443\u0447\u0448\u0435\u043D\u0438\u0435 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: m_margin.w
-      value: 3.6552455
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934288853834716271, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6811188639848537089, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: _particleSystem
-      value: 
-      objectReference: {fileID: 5693088196000456819, guid: 4a94ac1285ddf604db9324f8877d2b8a, type: 3}
-    - target: {fileID: 7602329642269098051, guid: 9ef9034a610a43b44aea0ddaff9e4ddd, type: 3}
-      propertyPath: m_Name
-      value: SpeedUpgradeArea_01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12891,6 +12899,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2112047104 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8216199971033805472, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
+  m_PrefabInstance: {fileID: 2112047100}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2114120376

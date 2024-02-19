@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Leaderboard : MonoBehaviour
 {
-    private const string AnonymousName = "Anonymous";
+    private const string AnonymousName = "AnonymousName";
     private const string LeaderboardName = "Leaderboard";
 
     [SerializeField] private LeaderboardView _leaderboardView;
@@ -42,9 +42,9 @@ public class Leaderboard : MonoBehaviour
 
     public void OpenLeaderboard()
     {
-/*#if !UNITY_WEBGL || UNITY_EDITOR
+#if !UNITY_WEBGL || UNITY_EDITOR
         _authorizationRequestPanel.SetActive(true);
-#else*/
+#else
 
         if (PlayerAccount.IsAuthorized)
         {
@@ -62,7 +62,7 @@ public class Leaderboard : MonoBehaviour
 
             return;
         }
-//#endif
+#endif
     }
 
     public void Authorize()

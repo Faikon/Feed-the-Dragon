@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class FocusObserver : MonoBehaviour
 {
+    private float _currentTimeScale = 1f;
+
     private void OnEnable()
     {
         Application.focusChanged += OnInBackgroundChangeApp;
@@ -13,6 +15,11 @@ public class FocusObserver : MonoBehaviour
     {
         Application.focusChanged -= OnInBackgroundChangeApp;
         WebApplication.InBackgroundChangeEvent -= OnInBackgroundChangeWeb;
+    }
+
+    public void SetCurrentTimeScale(float timeScale)
+    {
+        _currentTimeScale = timeScale;
     }
 
     private void OnInBackgroundChangeApp(bool inApp)
@@ -46,6 +53,6 @@ public class FocusObserver : MonoBehaviour
 
     private void PauseGame(bool value)
     {
-        Time.timeScale = value ? 0 : 1;
+        Time.timeScale = value ? 0 : _currentTimeScale;
     }
 }

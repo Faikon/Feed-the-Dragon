@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UpgradeView : MonoBehaviour
@@ -6,6 +7,7 @@ public class UpgradeView : MonoBehaviour
     [SerializeField] private PlayerUpgrade _playerUpgrades;
     [SerializeField] private UpgradeScrollView _upgradeScrollView;
     [SerializeField] private PlayerMoneyText _playerMoneyText;
+    [SerializeField] private TMP_Text _crystalsText;
 
     public void Upgrade()
     {
@@ -14,6 +16,10 @@ public class UpgradeView : MonoBehaviour
             _upgradeButton.SetText();
             _playerMoneyText.SetText();
             _upgradeScrollView.FillUpgradeView();
+        }
+        else
+        {
+            _crystalsText.GetComponent<Animator>().Play("CrystalsAnimation");
         }
     }
 }

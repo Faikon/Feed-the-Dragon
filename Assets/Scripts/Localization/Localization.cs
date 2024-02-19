@@ -8,7 +8,7 @@ public sealed class Localization : MonoBehaviour
     private const string RussianCode = "ru";
     private const string TurkishCode = "tr";
 
-    private void Awake()
+    private void Start()
     {
 #if UNITY_WEBGL && !UNITY_EDITOR
         ChangeLanguage();

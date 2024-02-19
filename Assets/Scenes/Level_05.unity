@@ -4261,15 +4261,15 @@ PrefabInstance:
       objectReference: {fileID: 498849717}
     - target: {fileID: 8768771768329189216, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: _starsRequirements.Array.data[0]
-      value: 240
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 8768771768329189216, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: _starsRequirements.Array.data[1]
-      value: 180
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 8768771768329189216, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: _starsRequirements.Array.data[2]
-      value: 140
+      value: 190
       objectReference: {fileID: 0}
     - target: {fileID: 9054227524147028804, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
       propertyPath: m_Name
@@ -4311,6 +4311,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &748986640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8216199971033805472, guid: 2bc3b2214c23c2941b418e07f22d9131, type: 3}
+  m_PrefabInstance: {fileID: 748986636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &751399007
@@ -5618,6 +5629,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
+      propertyPath: _audioToggle
+      value: 
+      objectReference: {fileID: 748986640}
     - target: {fileID: 7458143372478764272, guid: c5a471aba4ea3ca4fb3edc88c0c00527, type: 3}
       propertyPath: _focusObserver
       value: 
